@@ -23,7 +23,7 @@ function timer() {
 
 function displayCountdown() {
   textAlign(CENTER, CENTER);
-  textSize(64);
+  textSize(96);
   fill("red");
 
   let elapsed = int((millis() - startTime) / 1000); // seconds passed
