@@ -411,7 +411,7 @@ function leaderboardScreen() {
     drawGui();
 
     text("🏆 Dummy Leaderboard 🏆", width / 2, 40);
-    textSize(16);
+    textSize(24);
 
     // Draw leaderboard
     for (let i = 0; i < leaderboard.length; i++) {
@@ -421,7 +421,7 @@ function leaderboardScreen() {
           entry.score
         }`,
         width / 2,
-        100 + i * 50
+        100 + i * 75
       );
     }
     if (currentScreen == "leaderboard" && backButton.isPressed) {
