@@ -70,6 +70,8 @@ let backButton, leaderboardButton, savedBoard, saveButton;
 
 let backgroundSong
 
+let songStart = false
+
 function preload() {
   menuBackground = loadImage("Images/cafeteria.png");
   gameBackground = loadImage("Images/gameBackground.png");
@@ -311,7 +313,10 @@ function mouseClicked() {
     playerFrozen = false;
   }
   //Loop the song
-  backgroundSong.loop()
+  if(songStart == false){
+    songStart = true
+    backgroundSong.loop()
+  }
 }
 
 //Save initials and location
