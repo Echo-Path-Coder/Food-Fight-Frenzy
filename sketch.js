@@ -103,7 +103,7 @@ function setup() {
 
   gui = createGui();
 
-  playButton = createButton("Play", width / 2 - 50, height / 2 - 25, 150, 75);
+  playButton = createButton("Play", width / 2 - 50, height / 2 - 60, 150, 75);
   playButton.setStyle({
     textSize: 30,
     fillBg: color("orange"),
@@ -113,7 +113,7 @@ function setup() {
     strokeBg: color(0),
   });
 
-playButton2 = createButton("Play", width / 2 - 50, height / 2 - 25, 150, 75);
+playButton2 = createButton("Play", width / 2 - 50, height / 2 + 25, 150, 75);
   playButton2.setStyle({
     textSize: 30,
     fillBg: color("orange"),
