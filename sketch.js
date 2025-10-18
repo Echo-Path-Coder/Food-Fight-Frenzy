@@ -113,6 +113,18 @@ function setup() {
     strokeBg: color(0),
   });
 
+playButton2 = createButton("Play", width / 2 - 50, height / 2 - 25, 150, 75);
+  playButton2.setStyle({
+    textSize: 30,
+    fillBg: color("orange"),
+    fillBgHover: color("yellow"),
+    fillLabel: color(0),
+    rounding: 12,
+    strokeBg: color(0),
+  });
+  playButton2.visible = false
+  playButton2.enabled = false
+  
   backButton = createButton("Back To Menu", width / 2 - 100, height / 2, 225, 75);
   backButton.setStyle({
     textSize: 30,
