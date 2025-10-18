@@ -163,7 +163,7 @@ function setup() {
   initialsInput = createInput();
   initialsInput.attribute("maxlength", 30);
   initialsInput.attribute("placeholder", "Enter Initials");
-  initialsInput.position(width / 2, height / 2 - 40);
+  initialsInput.position(width / 2 + 50, height / 2 - 40);
   initialsInput.size(100);
   initialsInput.input(saveInput); // save when typing
 
@@ -171,7 +171,7 @@ function setup() {
   locationSelect = createInput();
   locationSelect.attribute("maxlength", 30);
   locationSelect.attribute("placeholder", "Enter Location");
-  locationSelect.position(width / 2, height / 2);
+  locationSelect.position(width / 2 + 50, height / 2);
   locationSelect.size(150);
   locationSelect.input(saveInput);
   
