@@ -72,6 +72,8 @@ let backgroundSong
 
 let songStart = false
 
+let gameCanvas;
+
 function preload() {
   menuBackground = loadImage("Images/cafeteria.png");
   gameBackground = loadImage("Images/gameBackground.png");
@@ -97,12 +99,10 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(600, 600);
-  
-  //Create gui and the buttons
+  gameCanvas = createCanvas(600, 600);
+
   gui = createGui();
 
-  //Create buttons so game doesn't break
   playButton = createButton("Play", width / 2 - 50, height / 2 - 25, 150, 75);
   playButton.setStyle({
     textSize: 30,
@@ -113,23 +113,7 @@ function setup() {
     strokeBg: color(0),
   });
 
-  playButton2 = createButton("Play", width / 2 - 50, height / 2 - 45, 150, 75);
-  playButton.setStyle({
-    textSize: 30,
-    fillBg: color("orange"),
-    fillBgHover: color("yellow"),
-    fillLabel: color(0),
-    rounding: 12,
-    strokeBg: color(0),
-  });
-
-  backButton = createButton(
-    "Back To Menu",
-    width / 2 - 100,
-    height / 2,
-    225,
-    75
-  );
+  backButton = createButton("Back To Menu", width / 2 - 100, height / 2, 225, 75);
   backButton.setStyle({
     textSize: 30,
     fillBg: color("orange"),
@@ -138,14 +122,8 @@ function setup() {
     rounding: 12,
     strokeBg: color(0),
   });
-  
-  saveButton = createButton(
-    "Save Score",
-    width / 2 - 100,
-    height / 2 + 100,
-    225,
-    75
-  );
+
+  saveButton = createButton("Save Score", width / 2 - 100, height / 2 + 100, 225, 75);
   saveButton.setStyle({
     textSize: 30,
     fillBg: color("orange"),
@@ -155,7 +133,6 @@ function setup() {
     strokeBg: color(0),
   });
 
-  //Create the leaderboard image
   leaderboardButton = new Clickable();
   leaderboardButton.resize(75, 75);
   leaderboardButton.image = trophyImg;
@@ -163,24 +140,32 @@ function setup() {
   leaderboardButton.textColor = "white";
   leaderboardButton.locate(0, 0);
 
-  // Create input for initials
   initialsInput = createInput();
   initialsInput.attribute("maxlength", 30);
   initialsInput.attribute("placeholder", "Enter Initials");
-  initialsInput.position(width / 2 + 50, height / 2 - 40);
   initialsInput.size(100);
-  initialsInput.input(saveInput); // save when typing
+  initialsInput.input(saveInput);
 
-  //Input for location
   locationSelect = createInput();
   locationSelect.attribute("maxlength", 30);
   locationSelect.attribute("placeholder", "Enter Location");
-  locationSelect.position(width / 2 + 50, height / 2);
   locationSelect.size(150);
   locationSelect.input(saveInput);
-  
-  savedBoard = localStorage.getItem("leaderboard")
+
+  positionInputs(); // fix input alignment
 }
+
+function positionInputs() {
+  let rect = gameCanvas.elt.getBoundingClientRect(); // ✅ correct element reference
+
+  initialsInput.position(rect.left + width / 2 - 50, rect.top + height / 2 - 40);
+  locationSelect.position(rect.left + width / 2 - 50, rect.top + height / 2);
+}
+
+function windowResized() {
+  positionInputs(); // ✅ realign on resize
+}
+
 
 //Select random enemy positions
 function selectEnemyPos() {
