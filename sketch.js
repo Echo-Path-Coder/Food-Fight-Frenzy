@@ -125,12 +125,13 @@ function setup() {
 
   backButton = createButton(
     "Back To Menu",
-    width / 2 - 75,
-    height / 2 + 75,
-    150,
-    50
+    width / 2 - 100,
+    height / 2,
+    225,
+    75
   );
   backButton.setStyle({
+    textSize: 30,
     fillBg: color("orange"),
     fillBgHover: color("yellow"),
     fillLabel: color(0),
@@ -140,12 +141,13 @@ function setup() {
   
   saveButton = createButton(
     "Save Score",
-    width / 2 - 75,
-    height / 2 + 135,
-    150,
-    50
+    width / 2 - 100,
+    height / 2 + 100,
+    225,
+    75
   );
   saveButton.setStyle({
+    textSize: 30,
     fillBg: color("orange"),
     fillBgHover: color("yellow"),
     fillLabel: color(0),
