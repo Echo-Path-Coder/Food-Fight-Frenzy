@@ -42,7 +42,7 @@ function createPlayButton(button) {
     // create a "Play" button
     playButton = createButton("Play", width / 2 - 50, height / 2 - 25, 150, 75);
     playButton.setStyle({
-      textSize: 20,
+      textSize: 30,
       fillBg: color("orange"),
       fillBgHover: color("yellow"),
       fillLabel: color(0),
@@ -54,12 +54,13 @@ function createPlayButton(button) {
   if (button == 1) {
     playButton2 = createButton(
       "Play",
-      width / 2 - 50,
-      height / 2 + 35,
-      100,
-      50
+      width / 2 - 60,
+      height / 2 + 60,
+      150,
+      75
     );
     playButton2.setStyle({
+      textSize: 30,
       fillBg: color("orange"),
       fillBgHover: color("yellow"),
       fillLabel: color(0),
