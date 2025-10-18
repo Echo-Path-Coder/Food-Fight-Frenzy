@@ -40,8 +40,9 @@ function updateLeaderboard(initials, location, score) {
 function createPlayButton(button) {
   if (button == 0) {
     // create a "Play" button
-    playButton = createButton("Play", width / 2 - 50, height / 2 - 25, 100, 50);
+    playButton = createButton("Play", width / 2 - 50, height / 2 - 25, 150, 75);
     playButton.setStyle({
+      textSize: 20,
       fillBg: color("orange"),
       fillBgHover: color("yellow"),
       fillLabel: color(0),
