@@ -344,6 +344,8 @@ function drawMenu() {
 function selectScreen() {
   if (currentScreen == "select") {
     if (dataLoaded == false) {
+      positionInputs()
+      
       // load only once
       const savedInitials = localStorage.getItem("playerInitials");
       const savedLocation = localStorage.getItem("playerLocation");
