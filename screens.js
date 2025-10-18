@@ -81,6 +81,7 @@ function createPlayButton(button) {
         50
       );
       backButton.setStyle({
+        textSize: 30,
         fillBg: color("orange"),
         fillBgHover: color("yellow"),
         fillLabel: color(0),
@@ -119,6 +120,14 @@ function createPlayButton(button) {
           150,
           50
         );
+         saveButton.setStyle({
+          textSize: 30,
+          fillBg: color("orange"),
+          fillBgHover: color("yellow"),
+          fillLabel: color(0),
+          rounding: 12,
+          strokeBg: color(0),
+        });
       }
     }
   } catch (err) {
@@ -129,9 +138,9 @@ function createPlayButton(button) {
 //Winner screen
 function winnerScreen() {
   textAlign(CENTER, CENTER);
-  textSize(48);
+  textSize(72);
   fill("limegreen");
-  text("YOU WIN", width / 2, height / 2);
+  text("YOU WIN", width / 2, height / 4);
   
   gameOver = true;
   drawGui();
@@ -151,9 +160,9 @@ function winnerScreen() {
 //Loser screen
 function loserScreen() {
   fill("red");
-  textSize(64);
+  textSize(96);
   textAlign(CENTER, CENTER);
-  text("Game Over!", width / 2, height / 2);
+  text("Game Over!", width / 2, height / 4);
   
   gameOver = true;
   enemySpeed = 0;
