@@ -103,8 +103,9 @@ function setup() {
   gui = createGui();
 
   //Create buttons so game doesn't break
-  playButton = createButton("Play", width / 2 - 50, height / 2 - 25, 100, 50);
+  playButton = createButton("Play", width / 2 - 50, height / 2 - 25, 150, 75);
   playButton.setStyle({
+    textSize: 20,
     fillBg: color("orange"),
     fillBgHover: color("yellow"),
     fillLabel: color(0),
@@ -112,8 +113,9 @@ function setup() {
     strokeBg: color(0),
   });
 
-  playButton2 = createButton("Play", width / 2 - 50, height / 2 - 45, 100, 50);
+  playButton2 = createButton("Play", width / 2 - 50, height / 2 - 45, 150, 75);
   playButton.setStyle({
+    textSize: 20,
     fillBg: color("orange"),
     fillBgHover: color("yellow"),
     fillLabel: color(0),
