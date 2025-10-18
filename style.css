@@ -11,4 +11,7 @@ body, html {
 
 canvas {
   display: block;
+  max-width: 100%;
+  height: auto; /* maintain aspect ratio */
+  background: transparent; /* makes canvas itself transparent */
 }
