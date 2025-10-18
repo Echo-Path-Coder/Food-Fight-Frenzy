@@ -105,7 +105,7 @@ function setup() {
   //Create buttons so game doesn't break
   playButton = createButton("Play", width / 2 - 50, height / 2 - 25, 150, 75);
   playButton.setStyle({
-    textSize: 20,
+    textSize: 40,
     fillBg: color("orange"),
     fillBgHover: color("yellow"),
     fillLabel: color(0),
