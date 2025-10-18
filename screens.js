@@ -310,7 +310,7 @@ function drawMenu() {
     strokeWeight(3);
     fill("yellow");
     textAlign(CENTER, CENTER);
-    textSize(40);
+    textSize(60);
     text("Food Fight Frenzy", width / 2, 120);
     drawGui();
     leaderboardButton.draw();
