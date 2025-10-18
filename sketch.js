@@ -149,10 +149,6 @@ function setup() {
     strokeBg: color(0),
   });
 
-  
-  //Loop the song
-  backgroundSong.loop()
-
   //Create the leaderboard image
   leaderboardButton = new Clickable();
   leaderboardButton.resize(75, 75);
@@ -314,6 +310,8 @@ function mouseClicked() {
     boxes.splice(0, boxes.length);
     playerFrozen = false;
   }
+  //Loop the song
+  backgroundSong.loop()
 }
 
 //Save initials and location
