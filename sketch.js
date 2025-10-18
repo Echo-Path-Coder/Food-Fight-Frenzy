@@ -158,8 +158,8 @@ function setup() {
 function positionInputs() {
   let rect = gameCanvas.elt.getBoundingClientRect(); // ✅ correct element reference
 
-  initialsInput.position(rect.left + width / 2 - 50, rect.top + height / 2 - 40);
-  locationSelect.position(rect.left + width / 2 - 50, rect.top + height / 2);
+  initialsInput.position(rect.left + width / 2 - 50, rect.top + height / 2 - 20);
+  locationSelect.position(rect.left + width / 2 - 50, rect.top + height / 2 + 20);
 }
 
 function windowResized() {
