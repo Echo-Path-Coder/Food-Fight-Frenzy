@@ -1,41 +1,3 @@
-//Create the leaderboard
-let leaderboard = JSON.parse(localStorage.getItem("leaderboard")) || [
-  { initials: "Ronald", location: "California", score: 80 },
-  { initials: "Jeff", location: "New York", score: 60 },
-  { initials: "Sarah", location: "Oceania", score: 30 },
-];
-localStorage.setItem("leaderboard", JSON.stringify(leaderboard));
-
-//Update leaderboard if higher score
-function updateLeaderboard(initials, location, score) {
-  // Check if player already exists in leaderboard
-  let player = leaderboard.find((entry) => entry.initials === initials);
-
-  if (player) {
-    // Update score if it's higher
-    if (score > player.score) {
-      player.score = score;
-      player.location = location; // update location too
-    }
-  } else {
-    // Add new entry
-    leaderboard.push({ initials, location, score });
-  }
-
-  // Sort leaderboard from highest to lowest score
-  leaderboard.sort((a, b) => b.score - a.score);
-
-  // Keep top 5 entries (you can change the number)
-  leaderboard = leaderboard.slice(0, 5);
-
-  if (leaderboard.length > 3) {
-    leaderboard.splice(3 - leaderboard.length, 3);
-  }
-
-  // Save updated leaderboard to localStorage
-  localStorage.setItem("leaderboard", JSON.stringify(leaderboard));
-}
-
 //Create function to make buttons
 function createPlayButton(button) {
   if (button == 0) {
@@ -153,6 +115,11 @@ function winnerScreen() {
     createPlayButton(0);
   }
   if (currentScreen == "play" && saveButton.isPressed) {
+    updateLeaderboard(
+      localStorage.getItem("playerInitials"),
+      localStorage.getItem("playerLocation"),
+      score
+    );
     currentScreen = "leaderboard";
   }
 }
@@ -393,15 +360,94 @@ function selectScreen() {
   }
 }
 
-//Create leaderboard screen
+let leaderboard = [];
+let lastGeneratedDate = "";
+
+function updateLeaderboard(initials, location, score) {
+  // Load the current leaderboard from localStorage
+  let storedLeaderboard = JSON.parse(localStorage.getItem("leaderboard")) || [];
+  leaderboard = storedLeaderboard; // use existing leaderboard
+
+  // Check if player already exists
+  let player = leaderboard.find((entry) => entry.initials === initials);
+
+  if (player) {
+    // Update score if higher
+    if (score > player.score) {
+      player.score = score;
+      player.location = location;
+    }
+  } else {
+    // Add new player
+    leaderboard.push({ initials, location, score });
+  }
+
+  // Sort from highest to lowest score
+  leaderboard.sort((a, b) => b.score - a.score);
+
+  // Keep only top 10 entries
+  if (leaderboard.length > 10) {
+    leaderboard = leaderboard.slice(0, 10);
+  }
+
+  // Save updated leaderboard back to localStorage
+  localStorage.setItem("leaderboard", JSON.stringify(leaderboard));
+}
+
+function generateDailyLeaderboard() {
+  // Get today's date in YYYY-MM-DD format
+  let today = new Date().toISOString().split("T")[0];
+
+  // Check if we already generated today's leaderboard
+  if (localStorage.getItem("leaderboardDate") === today) {
+    leaderboard = JSON.parse(localStorage.getItem("leaderboard"));
+    return;
+  }
+
+  // Otherwise, make a new random leaderboard
+  const sampleInitials = ["AM", "JS", "KT", "LM", "RB", "TD", "CG", "MP", "ZN", "QF"];
+  const sampleLocations = [
+    "Canada",
+    "USA",
+    "Japan",
+    "UK",
+    "France",
+    "Germany",
+    "Italy",
+    "Brazil",
+    "India",
+    "Australia"
+  ];
+
+  leaderboard = [];
+  for (let i = 0; i < 10; i++) {
+    let initials = sampleInitials[Math.floor(Math.random() * sampleInitials.length)];
+    let location = sampleLocations[Math.floor(Math.random() * sampleLocations.length)];
+    let score = Math.floor(Math.random() * 80 + 5); // random score 100–1100
+
+    leaderboard.push({ initials, location, score });
+  }
+
+  // Sort leaderboard (highest score first)
+  leaderboard.sort((a, b) => b.score - a.score);
+
+  // Save to localStorage with today's date
+  localStorage.setItem("leaderboard", JSON.stringify(leaderboard));
+  localStorage.setItem("leaderboardDate", today);
+}
+
 function leaderboardScreen() {
   if (currentScreen == "leaderboard") {
-    fill('yellow')
+    // Ensure leaderboard is ready
+    generateDailyLeaderboard();
+
+    fill("yellow");
     image(trophyRoom, 0, 0, width, height);
+
     initialsInput.hide();
     locationSelect.hide();
-    
-    //Disable buttons
+
+    // Disable buttons
     saveButton.visible = false;
     saveButton.enabled = false;
 
@@ -410,23 +456,43 @@ function leaderboardScreen() {
 
     drawGui();
 
-    text("🏆 Dummy Leaderboard 🏆", width / 2, 40);
-    textSize(24);
+    textAlign(CENTER);
+    textSize(28);
+    text("🏆 Daily Leaderboard 🏆", width / 2, 40);
+    textSize(22);
+
+    // Split into two columns
+    const leftX = width / 4;      // left column x position
+    const rightX = (width / 4) * 3; // right column x position
+    const startY = 100;           // top margin
+    const lineSpacing = 75;       // vertical spacing
 
     // Draw leaderboard
     for (let i = 0; i < leaderboard.length; i++) {
       let entry = leaderboard[i];
+      let columnX, rowY;
+
+      // First 5 entries on the left, rest on the right
+      if (i < 5) {
+        columnX = leftX;
+        rowY = startY + i * lineSpacing;
+      } else {
+        columnX = rightX;
+        rowY = startY + (i - 5) * lineSpacing;
+      }
+
       text(
-        `${i + 1}. ${entry.initials} \n ${entry.location}, Score: ${
-          entry.score
-        }`,
-        width / 2,
-        100 + i * 75
+        `${i + 1}. ${entry.initials} - ${entry.location}\nScore: ${entry.score}`,
+        columnX,
+        rowY
       );
     }
+
+    // Back button
     if (currentScreen == "leaderboard" && backButton.isPressed) {
       currentScreen = "menu";
       createPlayButton(0);
     }
   }
 }
+
