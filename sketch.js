@@ -102,9 +102,16 @@ function preload() {
   backgroundSong = loadSound("Images/backgroundSong.mp3");
 }
 
+function noScroll() {
+  document.body.style.overflow = "hidden"; // disable scrollbars
+  document.documentElement.style.overflow = "hidden";
+}
+
 function setup() {
   gameCanvas = createCanvas(600, 600);
 
+  noScroll()
+  
   gui = createGui();
 
   playButton = createButton("Play", width / 2 - 75, height / 2 - 60, 150, 75);
