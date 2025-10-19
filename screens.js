@@ -322,7 +322,7 @@ function drawMenu() {
     fill("yellow");
     textAlign(CENTER, CENTER);
     textSize(60);
-    text("Escape the Hungry \n Gobbler", width / 2, 150)
+    text("Escape the Hungry \n Gobbler", width / 2, 120)
     drawGui();
     leaderboardButton.draw();
   }
