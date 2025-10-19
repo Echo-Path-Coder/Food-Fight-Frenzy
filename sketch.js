@@ -104,6 +104,10 @@ function preload() {
 
 function setup() {
   gameCanvas = createCanvas(700, 500);
+
+// Prevent browser default touch actions (like scrolling)
+  document.body.style.touchAction = "none";
+  document.documentElement.style.overflow = "hidden";
   
   gui = createGui();
 
