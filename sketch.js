@@ -108,7 +108,7 @@ function noScroll() {
 }
 
 function setup() {
-  gameCanvas = createCanvas(600, 600);
+  gameCanvas = createCanvas(700, 500);
 
   noScroll()
   
