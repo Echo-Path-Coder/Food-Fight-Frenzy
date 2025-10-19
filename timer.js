@@ -18,6 +18,7 @@ function timer() {
   if (timeLeft === 0 && gameStatus == "play") {
     gameStatus = "win";
     createPlayButton(2);
+    createPlayButton(4);
   }
 }
 
