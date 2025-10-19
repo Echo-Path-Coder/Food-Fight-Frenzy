@@ -74,6 +74,10 @@ let songStart = false
 
 let gameCanvas;
 
+let instructionPhase = true;
+let instructionStartTime = 0;
+let countdownActive = false;
+
 function preload() {
   menuBackground = loadImage("Images/cafeteria.png");
   gameBackground = loadImage("Images/gameBackground.png");
@@ -305,6 +309,7 @@ function collides(x1, y1, s1, x2, y2, s2) {
 function mouseClicked() {
   if (gameOver == true) {
     //Play again when clicked
+    resetCountdown()
     setupTrue = true;
     gameOver = false;
     start = true;
