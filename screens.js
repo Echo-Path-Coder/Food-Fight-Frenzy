@@ -462,8 +462,8 @@ function leaderboardScreen() {
     textSize(22);
 
     // Split into two columns
-    const leftX = width / 4;      // left column x position
-    const rightX = (width / 4) * 3; // right column x position
+    const leftX = width / 5;      // left column x position
+    const rightX = (width / 5) * 4; // right column x position
     const startY = 100;           // top margin
     const lineSpacing = 75;       // vertical spacing
 
