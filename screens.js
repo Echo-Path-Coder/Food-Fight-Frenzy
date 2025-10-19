@@ -40,7 +40,7 @@ function updateLeaderboard(initials, location, score) {
 function createPlayButton(button) {
   if (button == 0) {
     // create a "Play" button
-    playButton = createButton("Play", width / 2 - 50, height / 2 - 60, 150, 75);
+    playButton = createButton("Play", width / 2 - 75, height / 2 - 60, 150, 75);
     playButton.setStyle({
       textSize: 30,
       fillBg: color("orange"),
@@ -322,7 +322,7 @@ function drawMenu() {
     fill("yellow");
     textAlign(CENTER, CENTER);
     textSize(60);
-    text("Food Fight Frenzy", width / 2, 120);
+    text("Escape the Hungry \n Gobbler", width / 2, 150)
     drawGui();
     leaderboardButton.draw();
   }
