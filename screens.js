@@ -441,7 +441,9 @@ function leaderboardScreen() {
     // Ensure leaderboard is ready
     generateDailyLeaderboard();
 
-    fill("yellow");
+    stroke('black')
+    strokeWeight(4)
+    fill("white");
     image(trophyRoom, 0, 0, width, height);
 
     initialsInput.hide();
@@ -454,13 +456,25 @@ function leaderboardScreen() {
     playButton.visible = false;
     playButton2.visible = false;
 
+    push()
+    // --- BACKGROUND SQUARES ---
+    noStroke();
+    fill(0, 0, 0, 180); // dark transparent squares
+    let boxWidth = 320;
+    let boxHeight = 400;
+    rect(width / 2 - boxWidth - 50, 60, boxWidth - 50, boxHeight, 20); // left box
+    rect(width / 2 + 110, 60, boxWidth - 50, boxHeight, 20); // right box
+    pop()
+    
     drawGui();
 
+    fill("yellow")
     textAlign(CENTER);
     textSize(28);
     text("🏆 Daily Leaderboard 🏆", width / 2, 40);
     textSize(22);
 
+    fill("white")
     // Split into two columns
     const leftX = width / 5;      // left column x position
     const rightX = (width / 5) * 4; // right column x position
