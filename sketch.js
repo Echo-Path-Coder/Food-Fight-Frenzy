@@ -168,7 +168,7 @@ playButton2 = createButton("Play", width / 2 - 50, height / 2 + 25, 150, 75);
 
   leaderboardButton = new Clickable();
   leaderboardButton.resize(75, 75);
-  leaderboardButton.image = toiletImg;
+  leaderboardButton.image = trophyImg;
   leaderboardButton.text = "Leaderboard";
   leaderboardButton.textColor = "white";
   leaderboardButton.locate(0, 0);
