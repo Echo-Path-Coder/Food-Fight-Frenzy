@@ -107,6 +107,18 @@ function setup() {
   
   gui = createGui();
 
+  gameCanvas.elt.tabIndex = 0;
+gameCanvas.elt.addEventListener("mousedown", () => {
+  gameCanvas.elt.focus();
+});
+gameCanvas.elt.addEventListener("keydown", (e) => {
+  if (
+    ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(e.key)
+  ) {
+    e.preventDefault();
+  }
+});
+
   playButton = createButton("Play", width / 2 - 75, height / 2 - 60, 150, 75);
   playButton.setStyle({
     textSize: 30,
