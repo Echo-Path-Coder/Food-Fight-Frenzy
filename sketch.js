@@ -102,22 +102,17 @@ function preload() {
   backgroundSong = loadSound("Images/backgroundSong.mp3");
 }
 
+function noScroll() {
+  document.body.style.overflow = "hidden"; // disable scrollbars
+  document.documentElement.style.overflow = "hidden";
+}
+
 function setup() {
   gameCanvas = createCanvas(700, 500);
+
+  noScroll()
   
   gui = createGui();
-
-  gameCanvas.elt.tabIndex = 0;
-gameCanvas.elt.addEventListener("mousedown", () => {
-  gameCanvas.elt.focus();
-});
-gameCanvas.elt.addEventListener("keydown", (e) => {
-  if (
-    ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(e.key)
-  ) {
-    e.preventDefault();
-  }
-});
 
   playButton = createButton("Play", width / 2 - 75, height / 2 - 60, 150, 75);
   playButton.setStyle({
@@ -171,20 +166,16 @@ playButton2 = createButton("Play", width / 2 - 50, height / 2 + 25, 150, 75);
   initialsInput = createInput();
   initialsInput.attribute("maxlength", 30);
   initialsInput.attribute("placeholder", "Enter Initials");
-  initialsInput.size(100, 25);
+  initialsInput.size(100);
   initialsInput.input(saveInput);
 
   locationSelect = createInput();
   locationSelect.attribute("maxlength", 30);
   locationSelect.attribute("placeholder", "Enter Location");
-  locationSelect.size(150, 25);
+  locationSelect.size(150);
   locationSelect.input(saveInput);
 
   positionInputs(); // fix input alignment
-
-  // Make sure the canvas stays below
-  gameCanvas.elt.style.position = "relative";
-  gameCanvas.elt.style.zIndex = "0";
 }
 
 function positionInputs() {
@@ -346,35 +337,3 @@ function saveInput(initials, location) {
   localStorage.setItem("playerInitials", initials);
   localStorage.setItem("playerLocation", location);
 }
-
-function touchStarted() {
-  mouseClicked()
-  // Check if the touch is within the bounds of the input box
-  if (
-    mouseX > initialsInput.x &&
-    mouseX < initialsInput.x + initialsInput.width &&
-    mouseY > initialsInput.y &&
-    mouseY < initialsInput.y + initialsInput.height
-  ) {
-    // Focus the input element to bring up the keyboard
-    initialsInput.elt.focus();
-  }
-  
-  // Check if the touch is within the bounds of the input box
-  if (
-    mouseX > locationSelect.x &&
-    mouseX < locationSelect.x + locationSelect.width &&
-    mouseY > locationSelect.y &&
-    mouseY < locationSelect.y + locationSelect.height
-  ) {
-    // Focus the input element to bring up the keyboard
-    locationSelect.elt.focus();
-  }
-  // This is important to prevent default browser behavior
-  return false;
-}
-
-
-
-
-
