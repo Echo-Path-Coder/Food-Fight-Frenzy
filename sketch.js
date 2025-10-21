@@ -352,4 +352,34 @@ function saveInput(initials, location) {
   localStorage.setItem("playerLocation", location);
 }
 
+function touchStarted() {
+  mouseClicked()
+  // Check if the touch is within the bounds of the input box
+  if (
+    mouseX > initialsInput.x &&
+    mouseX < initialsInput.x + initialsInput.width &&
+    mouseY > initialsInput.y &&
+    mouseY < initialsInput.y + initialsInput.height
+  ) {
+    // Focus the input element to bring up the keyboard
+    initialsInput.elt.focus();
+  }
+  
+  // Check if the touch is within the bounds of the input box
+  if (
+    mouseX > locationSelect.x &&
+    mouseX < locationSelect.x + locationSelect.width &&
+    mouseY > locationSelect.y &&
+    mouseY < locationSelect.y + locationSelect.height
+  ) {
+    // Focus the input element to bring up the keyboard
+    locationSelect.elt.focus();
+  }
+  // This is important to prevent default browser behavior
+  return false;
+}
+
+
+
+
 
