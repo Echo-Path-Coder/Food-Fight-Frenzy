@@ -107,22 +107,23 @@ function setup() {
   
   gui = createGui();
 
-  // Make sure the canvas is focusable
-gameCanvas.elt.tabIndex = 0;
+ gameCanvas.elt.tabIndex = 0;
 
-// Optional: automatically focus when the user clicks the canvas
-gameCanvas.elt.addEventListener("mousedown", () => {
-  gameCanvas.elt.focus();
+// Only focus the canvas if user actually clicks on it
+gameCanvas.elt.addEventListener("mousedown", (e) => {
+  if (e.target === gameCanvas.elt) {
+    gameCanvas.elt.focus();
+  }
 });
-  
-  // Stop scrolling only for arrow keys when the canvas is focused
-  gameCanvas.elt.addEventListener("keydown", (e) => {
-    if (
-      ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(e.key)
-    ) {
-      e.preventDefault();
-    }
-  });
+
+// Prevent arrow key scrolling *only when canvas is focused*
+gameCanvas.elt.addEventListener("keydown", (e) => {
+  const blockedKeys = ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"];
+  if (blockedKeys.includes(e.key)) {
+    e.preventDefault();
+  }
+});
+
 
   playButton = createButton("Play", width / 2 - 75, height / 2 - 60, 150, 75);
   playButton.setStyle({
