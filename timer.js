@@ -30,18 +30,40 @@ function displayCountdown() {
   // ---- INSTRUCTION PHASE ----
   if (instructionPhase) {
     if (instructionStartTime === 0) instructionStartTime = millis(); // start timer
-    fill("red");
-    textSize(28);
-    text(
-      "The monster’s hungry and you’re dinner!\n" +
-        "Hold down arrow keys or WASD to run!\n" +
-        "Dodge a relentless, evil toilet that trips you,\n" +
-        "and chomp yellow pellets for brief invincibility.\n" +
-        "Stay alive for 90 seconds of and\n" +
-        "Escape the Hungry Gobbler!",
-      width / 2,
-      height / 2 - 120
-    );
+    push();
+
+  // Center and style setup
+  textAlign(CENTER, CENTER);
+  rectMode(CENTER);
+  textSize(26);
+  textFont("Trebuchet MS");
+  textStyle(BOLD);
+
+  // Background box for readability
+  const boxW = 620;
+  const boxH = 230;
+  fill(0, 0, 0, 160); // semi-transparent black
+  noStroke();
+  rect(width / 2, height / 2 - 60, boxW, boxH, 20);
+
+  // Drop shadow for text
+  const mainText =
+    "The monster’s hungry—and you’re dinner!\n" +
+    "Hold down arrow keys or WASD to run!\n" +
+    "Dodge a relentless, evil toilet that trips you,\n" +
+    "and chomp yellow pellets for a brief invincibility.\n" +
+    "Stay alive for 90 seconds and\n" +
+    "Escape the Hungry Gobbler!";
+
+  // Shadow
+  fill(0, 0, 0, 180);
+  text(mainText, width / 2 + 2, height / 2 - 52);
+
+  // Main text
+  fill("#ffdc73"); // yellow-gold accent
+  text(mainText, width / 2, height / 2 - 55);
+
+  pop();
 
     // timer
     let timeLeft = int(10 - (millis() - instructionStartTime) / 1000);
