@@ -102,17 +102,27 @@ function preload() {
   backgroundSong = loadSound("Images/backgroundSong.mp3");
 }
 
-function noScroll() {
-  document.body.style.overflow = "hidden"; // disable scrollbars
-  document.documentElement.style.overflow = "hidden";
-}
-
 function setup() {
   gameCanvas = createCanvas(700, 500);
-
-  noScroll()
   
   gui = createGui();
+
+  // Make sure the canvas is focusable
+gameCanvas.elt.tabIndex = 0;
+
+// Optional: automatically focus when the user clicks the canvas
+gameCanvas.elt.addEventListener("mousedown", () => {
+  gameCanvas.elt.focus();
+});
+  
+  // Stop scrolling only for arrow keys when the canvas is focused
+  gameCanvas.elt.addEventListener("keydown", (e) => {
+    if (
+      ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(e.key)
+    ) {
+      e.preventDefault();
+    }
+  });
 
   playButton = createButton("Play", width / 2 - 75, height / 2 - 60, 150, 75);
   playButton.setStyle({
