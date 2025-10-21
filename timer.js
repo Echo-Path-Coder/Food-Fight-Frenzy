@@ -33,10 +33,10 @@ function displayCountdown() {
     fill("red");
     textSize(28);
     text(
-      "The monster’s hungry—and you’re dinner!\n" +
+      "The monster’s hungry and you’re dinner!\n" +
         "Hold down arrow keys or WASD to run!\n" +
         "Dodge a relentless, evil toilet that trips you,\n" +
-        "and chomp yellow pellets for a brief invincibility.\n" +
+        "and chomp yellow pellets for brief invincibility.\n" +
         "Stay alive for 90 seconds of and\n" +
         "Escape the Hungry Gobbler!",
       width / 2,
