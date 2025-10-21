@@ -186,6 +186,10 @@ playButton2 = createButton("Play", width / 2 - 50, height / 2 + 25, 150, 75);
   locationSelect.input(saveInput);
 
   positionInputs(); // fix input alignment
+
+  // Make sure the canvas stays below
+  gameCanvas.elt.style.position = "relative";
+  gameCanvas.elt.style.zIndex = "0";
 }
 
 function positionInputs() {
