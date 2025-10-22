@@ -48,10 +48,10 @@ function displayCountdown() {
 
   // Drop shadow for text
   const mainText =
-    "The monster’s hungry—and you’re dinner!\n" +
+    "The monster’s hungry and you’re dinner!\n" +
     "Hold down arrow keys or WASD to run!\n" +
     "Dodge a relentless, evil toilet that trips you,\n" +
-    "and chomp yellow pellets for a brief invincibility.\n" +
+    "and chomp yellow pellets for brief invincibility.\n" +
     "Stay alive for 90 seconds and\n" +
     "Escape the Hungry Gobbler!";
 
