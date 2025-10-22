@@ -439,7 +439,9 @@ function generateDailyLeaderboard() {
 function leaderboardScreen() {
   if (currentScreen == "leaderboard") {
     // Ensure leaderboard is ready
-    generateDailyLeaderboard();
+    if (leaderboard.length === 0) {
+      generateDailyLeaderboard();
+    }
 
     stroke('black')
     strokeWeight(4)
@@ -457,7 +459,7 @@ function leaderboardScreen() {
     playButton2.visible = false;
 
     push()
-    // --- BACKGROUND SQUARES ---
+    //Draw background squares
     noStroke();
     fill(0, 0, 0, 180); // dark transparent squares
     let boxWidth = 320;
