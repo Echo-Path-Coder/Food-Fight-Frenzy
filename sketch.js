@@ -63,6 +63,7 @@ let menuBackground,
 let score = 0;
 
 let initialsInput, locationSelect, playButton2;
+let initialsBox, locationBox
 let dataLoaded = false;
 let savedInitials, savedLocation;
 
@@ -159,6 +160,27 @@ playButton2 = createButton("Play", width / 2 - 50, height / 2 + 25, 150, 75);
   saveButton = createButton("Save Score", width / 2 - 100, height / 2 + 100, 225, 75);
   saveButton.setStyle({
     textSize: 30,
+    fillBg: color("orange"),
+    fillBgHover: color("yellow"),
+    fillLabel: color(0),
+    rounding: 12,
+    strokeBg: color(0),
+  });
+
+  // Create GUI buttons next to where the inputs are
+  initialsBox = createButton("Focus", width / 2 + 150, height / 2 - 30, 50, 50);
+  initialsBox.setStyle({
+    textSize: 10,
+    fillBg: color("orange"),
+    fillBgHover: color("yellow"),
+    fillLabel: color(0),
+    rounding: 12,
+    strokeBg: color(0),
+  });
+  locationBox = createButton("Focus", width / 2 + 150, height / 2 + 30, 50, 50);
+  
+  locationBox.setStyle({
+    textSize: 10,
     fillBg: color("orange"),
     fillBgHover: color("yellow"),
     fillLabel: color(0),
