@@ -95,6 +95,39 @@ function createPlayButton(button) {
   } catch (err) {
     console.log(err);
   }
+  if (button == 5) {
+    initialsBox.visible = true;
+      initialsBox.enabled = true;
+      if (!initialsBox) {
+    // create a "Play" button
+    initialsBox = createButton("Play", width / 2 - 50, height / 2 - 60, 150, 75);
+    initialsBox.setStyle({
+      textSize: 30,
+      fillBg: color("orange"),
+      fillBgHover: color("yellow"),
+      fillLabel: color(0),
+      rounding: 12,
+      strokeBg: color(0),
+    });
+      }
+  }
+  
+  if (button == 6) {
+    locationBox.visible = true;
+      locationBox.enabled = true;
+      if (!locationBox) {
+    // create a "Play" button
+    locationBox = createButton("Play", width / 2 - 50, height / 2 - 60, 150, 75);
+    locationBox.setStyle({
+      textSize: 30,
+      fillBg: color("orange"),
+      fillBgHover: color("yellow"),
+      fillLabel: color(0),
+      rounding: 12,
+      strokeBg: color(0),
+    });
+      }
+  }
 }
 
 //Winner screen
@@ -281,6 +314,13 @@ function drawMenu() {
     try {
       playButton2.visible = false;
     } catch {}
+    //In case any errors happen
+    try {
+      initialsBox.visible = false;
+      initialsBox.enabled = false
+      locationBox.visible = false;
+      locationBox.enabled = false
+    } catch (err) {}
     
     //Style the menu
     image(menuBackground, 0, 0, width, height);
@@ -320,6 +360,9 @@ function selectScreen() {
       if (savedInitials) initialsInput.value(savedInitials);
       if (savedLocation) locationSelect.value(savedLocation);
 
+      createPlayButton(5)
+      createPlayButton(6)
+      
       dataLoaded = true; // mark as loaded
     }
 
@@ -351,6 +394,14 @@ function selectScreen() {
         initialsInput.hide();
         locationSelect.hide();
         playButton2.visible = false;
+
+        //In case any errors happen
+    try {
+      initialsBox.visible = false;
+      initialsBox.enabled = false
+      locationBox.visible = false;
+      locationBox.enabled = false
+    } catch (err) {}
 
         dataLoaded = false; // reset for next time
       } else {
