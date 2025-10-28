@@ -383,6 +383,14 @@ function selectScreen() {
     locationSelect.show();
     drawGui();
 
+    if (initialsBox.isPressed) {
+    initialsInput.elt.focus(); // manually focus it
+  }
+
+  if (locationBox.isPressed) {
+    locationSelect.elt.focus();
+  }
+    
     //Play game when pressed
     if (playButton2.isPressed) {
       if (initials.length >= 3 && location != "") {
