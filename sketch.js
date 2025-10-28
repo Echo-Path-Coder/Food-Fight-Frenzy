@@ -362,6 +362,27 @@ function mouseClicked() {
     songStart = true
     backgroundSong.loop()
   }
+  if(currentScreen == 'select'){
+    if (initialsBox.isPressed) {
+    initialsInput.elt.focus(); // manually focus it
+  }
+
+  if (locationBox.isPressed) {
+    locationSelect.elt.focus();
+  }
+  }
+}
+
+function touchStarted(){
+if(currentScreen == 'select'){
+    if (initialsBox.isPressed) {
+    initialsInput.elt.focus(); // manually focus it
+  }
+
+  if (locationBox.isPressed) {
+    locationSelect.elt.focus();
+  }
+  }
 }
 
 //Save initials and location
